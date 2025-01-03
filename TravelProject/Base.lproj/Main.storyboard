@@ -61,6 +61,12 @@
                                         <constraint firstAttribute="trailing" secondItem="Qgv-i0-DY2" secondAttribute="trailing" constant="32" id="z5U-ED-WT8"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="itD-t2-xGD" id="aiZ-eE-Ooa"/>
+                                    <outlet property="photoImageView" destination="Qgv-i0-DY2" id="H26-Sn-D5b"/>
+                                    <outlet property="subTitleLabel" destination="KTD-7p-klu" id="LDB-b5-ahe"/>
+                                    <outlet property="titleLabel" destination="2Aa-r8-jfI" id="91j-tm-uVS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
