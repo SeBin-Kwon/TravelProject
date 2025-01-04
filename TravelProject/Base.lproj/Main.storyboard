@@ -112,7 +112,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ry9-89-Zm0">
-                                            <rect key="frame" x="16" y="37" width="33" height="16"/>
+                                            <rect key="frame" x="16" y="37" width="266" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -133,7 +133,7 @@
                                             <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kp-EU-QHb">
-                                            <rect key="frame" x="54" y="58" width="31" height="15"/>
+                                            <rect key="frame" x="47" y="58" width="31" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -146,9 +146,10 @@
                                         <constraint firstItem="ry9-89-Zm0" firstAttribute="leading" secondItem="7V1-OS-S5o" secondAttribute="leading" constant="16" id="HuA-Ru-iit"/>
                                         <constraint firstItem="qHd-xN-x3v" firstAttribute="top" secondItem="ry9-89-Zm0" secondAttribute="bottom" constant="5" id="ISh-Bg-Lb0"/>
                                         <constraint firstItem="7Kp-EU-QHb" firstAttribute="centerY" secondItem="qHd-xN-x3v" secondAttribute="centerY" id="IUP-KZ-ltJ"/>
+                                        <constraint firstItem="Wja-hD-mR9" firstAttribute="leading" secondItem="ry9-89-Zm0" secondAttribute="trailing" constant="10" id="N5g-mk-gmf"/>
                                         <constraint firstAttribute="bottom" secondItem="Wja-hD-mR9" secondAttribute="bottom" constant="16" id="PIh-Mu-Pt7"/>
                                         <constraint firstItem="g64-c1-UqX" firstAttribute="top" secondItem="7V1-OS-S5o" secondAttribute="top" constant="16" id="Rdt-e7-RvR"/>
-                                        <constraint firstItem="7Kp-EU-QHb" firstAttribute="leading" secondItem="qHd-xN-x3v" secondAttribute="trailing" constant="7" id="bLK-2B-DEm"/>
+                                        <constraint firstItem="7Kp-EU-QHb" firstAttribute="leading" secondItem="qHd-xN-x3v" secondAttribute="trailing" id="bLK-2B-DEm"/>
                                         <constraint firstItem="g64-c1-UqX" firstAttribute="leading" secondItem="7V1-OS-S5o" secondAttribute="leading" constant="16" id="dUp-Ew-k5y"/>
                                         <constraint firstItem="Wja-hD-mR9" firstAttribute="top" secondItem="7V1-OS-S5o" secondAttribute="top" constant="16" id="wZl-2K-A4b"/>
                                         <constraint firstItem="j1j-lt-pvU" firstAttribute="trailing" secondItem="Wja-hD-mR9" secondAttribute="trailing" constant="-10" id="wdX-Wq-eQ6"/>
@@ -171,6 +172,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="도시" id="TCD-vW-s0R"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="TCD-vW-s0R" id="zaR-nb-2NX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vH0-iS-CzU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
