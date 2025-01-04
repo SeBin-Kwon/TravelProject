@@ -11,21 +11,12 @@ import Kingfisher
 class TravelInfoTableViewController: UITableViewController {
     
     @IBOutlet var navigationBar: UINavigationItem!
-    let travelInfoList = TravelInfo().travel
-    var travelInfo = [Travel]()
-    var travelAd = [Travel]()
+    var travelInfo = TravelInfo().travel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 134
         navigationBar.title = "도시 상세 정보"
-        travelInfoList.forEach {
-            if $0.ad {
-                travelAd.append($0)
-            } else {
-                travelInfo.append($0)
-            }
-        }
     }
     
     @objc
@@ -40,21 +31,34 @@ class TravelInfoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoTableViewCell", for: indexPath)
-        guard let travelInfoCell = cell as? TravelInfoTableViewCell else { return cell }
         let row = travelInfo[indexPath.row]
-        
-        let urlString = row.travel_image ?? ""
-        guard let url = URL(string: urlString) else { return cell }
-        travelInfoCell.travelImageView.kf.setImage(with: url)
-        configureCellUI(cell: travelInfoCell, row: row)
-        travelInfoCell.likeButton.tag = indexPath.row
-        travelInfoCell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-        
-        return travelInfoCell
+        let cell: UITableViewCell
+        if row.ad {
+            cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath)
+            guard let adCell = cell as? AdTableViewCell else { return cell }
+            configureAdCellUI(cell: adCell, row: row)
+            
+            return adCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoTableViewCell", for: indexPath)
+            guard let travelInfoCell = cell as? TravelInfoTableViewCell else { return cell }
+
+            let urlString = row.travel_image ?? ""
+            guard let url = URL(string: urlString) else { return cell }
+            travelInfoCell.travelImageView.kf.setImage(with: url)
+            configureTravelInfoCellUI(cell: travelInfoCell, row: row)
+            travelInfoCell.likeButton.tag = indexPath.row
+            travelInfoCell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+            
+            return travelInfoCell
+        }
     }
     
-    func configureCellUI(cell: TravelInfoTableViewCell, row: Travel) {
+    func configureAdCellUI(cell: AdTableViewCell, row: Travel) {
+        cell.adLabel.text = row.title
+    }
+    
+    func configureTravelInfoCellUI(cell: TravelInfoTableViewCell, row: Travel) {
         cell.travelImageView.layer.cornerRadius = 10
         cell.travelImageView.contentMode = .scaleAspectFill
         
