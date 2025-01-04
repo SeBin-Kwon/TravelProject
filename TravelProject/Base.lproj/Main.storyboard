@@ -31,34 +31,35 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Aa-r8-jfI">
-                                            <rect key="frame" x="32" y="339" width="52" height="26.333333333333314"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <rect key="frame" x="32" y="339" width="329" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTD-7p-klu">
-                                            <rect key="frame" x="32" y="375.33333333333331" width="37.333333333333343" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <rect key="frame" x="32" y="369" width="41.333333333333343" height="20.333333333333314"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itD-t2-xGD">
-                                            <rect key="frame" x="328" y="407.33333333333331" width="33" height="15.666666666666686"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <rect key="frame" x="319.66666666666669" y="402.66666666666669" width="41.333333333333314" height="20.333333333333314"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="KTD-7p-klu" firstAttribute="top" secondItem="2Aa-r8-jfI" secondAttribute="bottom" constant="9" id="7fO-0n-ltF"/>
                                         <constraint firstAttribute="trailing" secondItem="itD-t2-xGD" secondAttribute="trailing" constant="32" id="Cxn-u0-t0A"/>
                                         <constraint firstItem="2Aa-r8-jfI" firstAttribute="top" secondItem="Qgv-i0-DY2" secondAttribute="bottom" constant="20" id="KFC-oe-atG"/>
                                         <constraint firstItem="Qgv-i0-DY2" firstAttribute="leading" secondItem="Yqo-fz-cIB" secondAttribute="leading" constant="32" id="L6S-uw-dSx"/>
+                                        <constraint firstItem="2Aa-r8-jfI" firstAttribute="width" secondItem="Qgv-i0-DY2" secondAttribute="width" id="aTh-Ie-87a"/>
                                         <constraint firstItem="2Aa-r8-jfI" firstAttribute="leading" secondItem="Yqo-fz-cIB" secondAttribute="leading" constant="32" id="d39-X6-Oq7"/>
                                         <constraint firstItem="KTD-7p-klu" firstAttribute="leading" secondItem="Yqo-fz-cIB" secondAttribute="leading" constant="32" id="e8h-bd-So0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Qgv-i0-DY2" secondAttribute="trailing" constant="12" id="gyD-JT-rRA"/>
                                         <constraint firstAttribute="bottom" secondItem="itD-t2-xGD" secondAttribute="bottom" constant="20" id="l0k-nf-gBx"/>
-                                        <constraint firstItem="KTD-7p-klu" firstAttribute="top" secondItem="2Aa-r8-jfI" secondAttribute="bottom" constant="10" id="oSF-Ya-y3X"/>
                                         <constraint firstItem="Qgv-i0-DY2" firstAttribute="top" secondItem="Yqo-fz-cIB" secondAttribute="top" constant="20" id="x7Q-Bn-cPq"/>
-                                        <constraint firstAttribute="trailing" secondItem="Qgv-i0-DY2" secondAttribute="trailing" constant="32" id="z5U-ED-WT8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
