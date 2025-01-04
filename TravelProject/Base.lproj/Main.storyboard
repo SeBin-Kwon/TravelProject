@@ -172,23 +172,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="134"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxF-sA-3YJ">
-                                            <rect key="frame" x="342" y="16" width="17" height="15"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="광고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1p-jB-MHn">
-                                            <rect key="frame" x="183" y="58" width="26" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="광고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1p-jB-MHn">
+                                            <rect key="frame" x="50" y="58" width="293" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxF-sA-3YJ">
+                                            <rect key="frame" x="347" y="16" width="30" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="4xp-tQ-sjY"/>
+                                                <constraint firstAttribute="width" constant="30" id="NCB-xL-RXn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="K1p-jB-MHn" firstAttribute="centerX" secondItem="FQU-hA-Vq3" secondAttribute="centerX" id="4aY-Jc-azO"/>
+                                        <constraint firstItem="nxF-sA-3YJ" firstAttribute="top" secondItem="FQU-hA-Vq3" secondAttribute="top" constant="16" id="H0A-WS-2K7"/>
+                                        <constraint firstItem="K1p-jB-MHn" firstAttribute="centerY" secondItem="FQU-hA-Vq3" secondAttribute="centerY" id="OFm-jq-yXf"/>
+                                        <constraint firstItem="K1p-jB-MHn" firstAttribute="width" secondItem="FQU-hA-Vq3" secondAttribute="width" multiplier="0.745547" id="PdP-6d-kRp"/>
+                                        <constraint firstAttribute="trailing" secondItem="nxF-sA-3YJ" secondAttribute="trailing" constant="16" id="zyl-0m-fra"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="adBadge" destination="nxF-sA-3YJ" id="v68-cC-xhA"/>
                                     <outlet property="adLabel" destination="K1p-jB-MHn" id="LVs-sa-hiY"/>
                                 </connections>
                             </tableViewCell>

@@ -15,7 +15,6 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 134
         navigationBar.title = "도시 상세 정보"
     }
     
@@ -56,6 +55,26 @@ class TravelInfoTableViewController: UITableViewController {
     
     func configureAdCellUI(cell: AdTableViewCell, row: Travel) {
         cell.adLabel.text = row.title
+        cell.adLabel.numberOfLines = 0
+        cell.adLabel.textAlignment = .center
+        cell.adLabel.font = .systemFont(ofSize: 15, weight: .bold)
+        
+        switch row.title {
+        case let title where title.contains("하와이"):
+            cell.backgroundColor = UIColor(named: "adColor1")
+        case let title where title.contains("도쿄"):
+            cell.backgroundColor = UIColor(named: "adColor2")
+        case let title where title.contains("제주"):
+            cell.backgroundColor = UIColor(named: "adColor3")
+        default:
+            cell.backgroundColor = UIColor(named: "adColor1")
+        }
+
+        cell.adBadge.textAlignment = .center
+        cell.adBadge.backgroundColor = .white
+        cell.adBadge.clipsToBounds = true
+        cell.adBadge.layer.cornerRadius = 8
+        cell.adBadge.font = .systemFont(ofSize: 12, weight: .medium)
     }
     
     func configureTravelInfoCellUI(cell: TravelInfoTableViewCell, row: Travel) {
@@ -80,5 +99,9 @@ class TravelInfoTableViewController: UITableViewController {
         
         cell.likeButton.tintColor = .white
         cell.likeButton.setImage(UIImage(systemName: row.like ?? false ? "heart.fill" : "heart"), for: .normal)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return travelInfo[indexPath.row].ad ? 90 : 134
     }
 }

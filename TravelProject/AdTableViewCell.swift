@@ -10,6 +10,7 @@ import UIKit
 class AdTableViewCell: UITableViewCell {
 
     @IBOutlet var adLabel: UILabel!
+    @IBOutlet var adBadge: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
