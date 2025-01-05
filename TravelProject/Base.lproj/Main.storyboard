@@ -368,11 +368,11 @@
             </objects>
             <point key="canvasLocation" x="34" y="-102"/>
         </scene>
-        <!--Item-->
+        <!--새싹 매거진-->
         <scene sceneID="Tlw-pV-VRX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w1a-zt-YTf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="eM8-Hf-b3D"/>
+                    <tabBarItem key="tabBarItem" title="새싹 매거진" image="magazine" catalog="system" id="eM8-Hf-b3D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w2Z-oC-6fs">
                         <rect key="frame" x="0.0" y="62" width="402" height="44"/>
@@ -387,11 +387,11 @@
             </objects>
             <point key="canvasLocation" x="1344" y="-363"/>
         </scene>
-        <!--Item-->
+        <!--도시 상세 정보-->
         <scene sceneID="ten-MP-rfy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tau-tn-ZOQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zWs-D8-L1n"/>
+                    <tabBarItem key="tabBarItem" title="도시 상세 정보" image="info.bubble" catalog="system" id="zWs-D8-L1n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qXG-Cx-f3E">
                         <rect key="frame" x="0.0" y="62" width="402" height="44"/>
@@ -406,11 +406,11 @@
             </objects>
             <point key="canvasLocation" x="1375" y="330"/>
         </scene>
-        <!--Item-->
+        <!--쇼핑 목록-->
         <scene sceneID="SdW-LI-R0u">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="glF-8A-U3u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="pQt-Ww-pGw"/>
+                    <tabBarItem key="tabBarItem" title="쇼핑 목록" image="bag" catalog="system" id="pQt-Ww-pGw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dbN-Su-qrj">
                         <rect key="frame" x="0.0" y="62" width="402" height="44"/>
@@ -427,8 +427,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bag" catalog="system" width="128" height="128"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="info.bubble" catalog="system" width="128" height="110"/>
+        <image name="magazine" catalog="system" width="110" height="128"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
