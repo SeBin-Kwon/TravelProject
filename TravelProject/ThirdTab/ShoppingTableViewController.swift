@@ -64,15 +64,6 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         return shoppingCell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle { return .delete }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            shoppingList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
     func configureCellUI(cell: ShoppingTableViewCell, row: Shopping) {
         cell.shoppingLabel.text = row.title
         cell.shoppingLabel.font = .systemFont(ofSize: 14)
@@ -105,6 +96,35 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         addButton.setTitleColor(.darkGray, for: .highlighted)
         addButton.backgroundColor = .systemGray5
         addButton.layer.cornerRadius = 8
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.shoppingList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            success(true)
+        }
+        delete.backgroundColor = .systemRed
+        delete.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions:[delete])
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let check = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.shoppingList[indexPath.row].check.toggle()
+            tableView.reloadRows(at: [indexPath], with: .left)
+            success(true)
+        }
+        let favorite = UIContextualAction(style: .normal, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.shoppingList[indexPath.row].favorite.toggle()
+            tableView.reloadRows(at: [indexPath], with: .left)
+            success(true)
+        }
+        check.backgroundColor = .systemTeal
+        favorite.backgroundColor = .systemYellow
+        check.image = UIImage(systemName: "checkmark.square")
+        favorite.image = UIImage(systemName: "star")
+        return UISwipeActionsConfiguration(actions:[check, favorite])
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
