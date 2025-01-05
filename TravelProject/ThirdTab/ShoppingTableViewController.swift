@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShoppingTableViewController: UITableViewController {
+class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var textFieldBackground: UIView!
@@ -16,14 +16,19 @@ class ShoppingTableViewController: UITableViewController {
     
     var shoppingList = [Shopping]() {
         didSet {
-            tableView.reloadData()
+            if !tableView.isEditing {
+                tableView.reloadData()
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.delegate = self
         configureHeaderUI()
         tableView.rowHeight = 56
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 56
     }
     
     
@@ -61,9 +66,19 @@ class ShoppingTableViewController: UITableViewController {
         return shoppingCell
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle { return .delete }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            shoppingList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     func configureCellUI(cell: ShoppingTableViewCell, row: Shopping) {
         cell.shoppingLabel.text = row.title
         cell.shoppingLabel.font = .systemFont(ofSize: 14)
+        cell.shoppingLabel.numberOfLines = 0
         
         cell.cellBackground.backgroundColor = .systemGray6
         cell.cellBackground.layer.cornerRadius = 10
@@ -93,6 +108,11 @@ class ShoppingTableViewController: UITableViewController {
         addButton.backgroundColor = .systemGray5
         addButton.layer.cornerRadius = 8
     }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let text = textField.text else { return false }
+//        text.count
+//    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
