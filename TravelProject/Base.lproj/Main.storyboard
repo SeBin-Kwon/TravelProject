@@ -237,6 +237,9 @@
                                             <rect key="frame" x="16" y="15.333333333333329" width="263" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textFieldReturnKeyTapped:" destination="zLr-Ss-e1h" eventType="editingDidEndOnExit" id="8J3-gh-Pj0"/>
+                                            </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgj-aE-NiE">
                                             <rect key="frame" x="295" y="16.333333333333329" width="50" height="32"/>

@@ -28,29 +28,22 @@ class ShoppingTableViewController: UITableViewController {
     
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        guard let text = textField.text else { return }
+        guard let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard !text.isEmpty else { return }
         let item = Shopping(title: text, check: false, favorite: false)
         shoppingList.append(item)
+        textField.text = ""
         view.endEditing(true)
     }
     
     @objc
     func checkButtonTapped(_ sender: UIButton) {
         shoppingList[sender.tag].check.toggle()
-        let check = shoppingList[sender.tag].check
-        sender.setImage(UIImage(systemName: check ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
-        print(check)
     }
     
     @objc
     func favoriteButtonTapped(_ sender: UIButton) {
         shoppingList[sender.tag].favorite.toggle()
-        let favorite = shoppingList[sender.tag].favorite
-        let symbolConfig = UIImage.SymbolConfiguration(scale: .medium)
-        let mediumStar = UIImage(systemName: "star", withConfiguration: symbolConfig)
-        let mediumStarFill = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
-        sender.setImage(favorite ? mediumStarFill : mediumStar, for: .normal)
-        print(favorite)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +69,13 @@ class ShoppingTableViewController: UITableViewController {
         cell.cellBackground.layer.cornerRadius = 10
         
         cell.checkButton.tintColor = .black
+        cell.checkButton.setImage(UIImage(systemName: row.check ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
+        
         cell.favoriteButton.tintColor = .black
+        let symbolConfig = UIImage.SymbolConfiguration(scale: .medium)
+        let mediumStar = UIImage(systemName: "star", withConfiguration: symbolConfig)
+        let mediumStarFill = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
+        cell.favoriteButton.setImage(row.favorite ? mediumStarFill : mediumStar, for: .normal)
     }
     
     func configureHeaderUI() {
@@ -93,6 +92,14 @@ class ShoppingTableViewController: UITableViewController {
         addButton.setTitleColor(.darkGray, for: .highlighted)
         addButton.backgroundColor = .systemGray5
         addButton.layer.cornerRadius = 8
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func textFieldReturnKeyTapped(_ sender: UITextField) {
+
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
