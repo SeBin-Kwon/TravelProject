@@ -27,8 +27,6 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         textField.delegate = self
         configureHeaderUI()
         tableView.rowHeight = 56
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 56
     }
     
     
@@ -99,7 +97,7 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         textFieldBackground.layer.cornerRadius = 10
         
         textField.borderStyle = .none
-        textField.placeholder = "무엇을 구매하실 건가요?"
+        textField.placeholder = "구매할 물건을 20자 이내로 작성해 주세요."
         textField.backgroundColor = .clear
         
         addButton.setTitle("추가", for: .normal)
@@ -109,10 +107,11 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         addButton.layer.cornerRadius = 8
     }
     
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        guard let text = textField.text else { return false }
-//        text.count
-//    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        if text.count + string.count > 20 { return false }
+        return true
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
