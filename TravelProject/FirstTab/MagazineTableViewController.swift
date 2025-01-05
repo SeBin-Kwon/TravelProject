@@ -14,10 +14,8 @@ class MagazineTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 450
-//        tableView.estimatedRowHeight = 450
-//        tableView.rowHeight = UITableView.automaticDimension
         navigationItem.title = "SeSAC TRAVEL"
+        tableView.rowHeight = (screen()?.bounds.height ?? 100) * 0.55
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
