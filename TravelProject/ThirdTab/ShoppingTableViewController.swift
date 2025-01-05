@@ -100,9 +100,15 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: nil) { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.shoppingList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            success(true)
+            self.displayDeleteAlert { action in
+                if action.style == .destructive {
+                    self.shoppingList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    success(true)
+                } else {
+                    success(true)
+                }
+            }
         }
         delete.backgroundColor = .systemRed
         delete.image = UIImage(systemName: "trash")
