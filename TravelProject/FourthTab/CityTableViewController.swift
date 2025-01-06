@@ -16,29 +16,50 @@ class CityTableViewController: UITableViewController {
     var overseasList: [City] {
         cityList.filter { !$0.domestic_travel }
     }
+    var filterList = [City]()
     var segmentIndex = 0
+    var isFiltering: Bool {
+        let searchController = self.navigationItem.searchController
+        let isActive = searchController?.isActive ?? false
+        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
+        return isActive && isSearchBarHasText
+    }
+    let searchController = UISearchController(searchResultsController: nil)
     
-    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var segment: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: CityTableViewCell.identifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: CityTableViewCell.identifier)
-        configureHeaderUI()
+        configureSegmentUI()
+        configureSearchBar()
     }
 
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
+        print(#function)
         segmentIndex = sender.selectedSegmentIndex
+        guard let searchText = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        if !searchText.isEmpty {
+            updateSearchResults(for: searchController)
+        }
         tableView.reloadData()
+    }
+
+    
+    func configureSearchBar() {
+        searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.placeholder = "찾고 싶은 도시를 입력해 주세요"
+        searchController.searchResultsUpdater = self
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = searchController
     }
     
     
-    func configureHeaderUI() {
+    func configureSegmentUI() {
         segment.setTitle("모두", forSegmentAt: 0)
         segment.setTitle("국내", forSegmentAt: 1)
         segment.setTitle("해외", forSegmentAt: 2)
-        searchBar.searchBarStyle = .minimal
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,15 +69,15 @@ class CityTableViewController: UITableViewController {
         
         switch segmentIndex {
         case 1:
-            row = domesticList[indexPath.row]
+            row = isFiltering ? filterList[indexPath.row] : domesticList[indexPath.row]
             cityCell.configureData(row: row)
             return cityCell
         case 2:
-            row = overseasList[indexPath.row]
+            row = isFiltering ? filterList[indexPath.row] : overseasList[indexPath.row]
             cityCell.configureData(row: row)
             return cityCell
         default:
-            row = cityList[indexPath.row]
+            row = isFiltering ? filterList[indexPath.row] : cityList[indexPath.row]
             cityCell.configureData(row: row)
             return cityCell
         }
@@ -69,12 +90,37 @@ class CityTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentIndex {
         case 1:
-            return domesticList.count
+            return isFiltering ? filterList.count : domesticList.count
         case 2:
-            return overseasList.count
+            return isFiltering ? filterList.count : overseasList.count
         default:
-            return cityList.count
+            return isFiltering ? filterList.count : cityList.count
         }
     }
 
+}
+
+extension CityTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        print(text)
+        switch segmentIndex {
+        case 1:
+            self.filterList = self.domesticList.filter { $0.city_name.localizedCaseInsensitiveContains(text) ||
+                $0.city_english_name.localizedCaseInsensitiveContains(text) ||
+                $0.city_explain.localizedCaseInsensitiveContains(text)
+            }
+        case 2:
+            self.filterList = self.overseasList.filter { $0.city_name.localizedCaseInsensitiveContains(text) ||
+                $0.city_english_name.localizedCaseInsensitiveContains(text) ||
+                $0.city_explain.localizedCaseInsensitiveContains(text)
+            }
+        default:
+            self.filterList = self.cityList.filter { $0.city_name.localizedCaseInsensitiveContains(text) ||
+                $0.city_english_name.localizedCaseInsensitiveContains(text) ||
+                $0.city_explain.localizedCaseInsensitiveContains(text)
+            }
+        }
+        self.tableView.reloadData()
+    }
 }

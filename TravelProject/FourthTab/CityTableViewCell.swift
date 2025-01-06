@@ -21,8 +21,8 @@ class CityTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-//        backgroundImageView.layer.masksToBounds = true
-//        backgroundImageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        backgroundImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        backgroundImageView.layer.cornerRadius = 20
         titleLabel.textColor = .white
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         titleLabel.textAlignment = .right
@@ -41,7 +41,6 @@ class CityTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }
