@@ -103,7 +103,11 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
             self.displayDeleteAlert { action in
                 if action.style == .destructive {
                     self.shoppingList.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    // MARK: 왜 얘를 쓰면 인덱스 에러가 날까요..?
+//                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    // 얘를 쓰면 delete할때 애니메이션이 사라져서 쓰기실허요..ㅠ
+                    tableView.reloadData()
+//                    print(self.shoppingList.count)
                     success(true)
                 } else {
                     success(true)
