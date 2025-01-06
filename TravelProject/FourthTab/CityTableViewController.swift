@@ -37,7 +37,6 @@ class CityTableViewController: UITableViewController {
     }
 
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
-        print(#function)
         segmentIndex = sender.selectedSegmentIndex
         guard let searchText = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         if !searchText.isEmpty {
@@ -103,7 +102,6 @@ class CityTableViewController: UITableViewController {
 extension CityTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        print(text)
         switch segmentIndex {
         case 1:
             self.filterList = self.domesticList.filter { $0.city_name.localizedCaseInsensitiveContains(text) ||

@@ -14,6 +14,7 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var subTitleLabel: UILabel!
     @IBOutlet private var backgroundImageView: UIImageView!
+    @IBOutlet var blackBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,9 @@ class CityTableViewCell: UITableViewCell {
     private func configureUI() {
         backgroundImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
         backgroundImageView.layer.cornerRadius = 20
+        blackBackground.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        blackBackground.layer.cornerRadius = 20
+        blackBackground.clipsToBounds = true
         titleLabel.textColor = .white
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         titleLabel.textAlignment = .right

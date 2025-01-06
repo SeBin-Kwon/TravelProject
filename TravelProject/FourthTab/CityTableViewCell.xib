@@ -23,6 +23,25 @@
                             <constraint firstAttribute="height" constant="125" id="7Vq-Vf-Ftk"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXF-2a-GV0">
+                        <rect key="frame" x="16" y="10" width="288" height="125"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4d-GB-1m3">
+                                <rect key="frame" x="0.0" y="90" width="288" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.45278870033112584" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="CLX-jU-Y9K"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.34631105132450329" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="K4d-GB-1m3" secondAttribute="trailing" id="BNM-uX-Foc"/>
+                            <constraint firstAttribute="bottom" secondItem="K4d-GB-1m3" secondAttribute="bottom" id="LiW-44-cla"/>
+                            <constraint firstItem="K4d-GB-1m3" firstAttribute="leading" secondItem="KXF-2a-GV0" secondAttribute="leading" id="fsi-BC-M3b"/>
+                            <constraint firstAttribute="height" constant="125" id="q5W-H7-NvE"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKs-s1-hQc">
                         <rect key="frame" x="254" y="18" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,6 +56,7 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="KXF-2a-GV0" secondAttribute="trailing" constant="16" id="4eg-me-wDP"/>
                     <constraint firstItem="yP5-0j-Rxv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8WK-Pw-HVU"/>
                     <constraint firstItem="yP5-0j-Rxv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LXI-MD-c2i"/>
                     <constraint firstItem="hKs-s1-hQc" firstAttribute="top" secondItem="yP5-0j-Rxv" secondAttribute="top" constant="8" id="MMZ-b1-SHO"/>
@@ -44,12 +64,16 @@
                     <constraint firstAttribute="trailing" secondItem="yP5-0j-Rxv" secondAttribute="trailing" constant="16" id="UdK-CD-EVW"/>
                     <constraint firstItem="4dq-my-tmB" firstAttribute="bottom" secondItem="yP5-0j-Rxv" secondAttribute="bottom" constant="-8" id="auZ-a8-ogI"/>
                     <constraint firstItem="hKs-s1-hQc" firstAttribute="trailing" secondItem="yP5-0j-Rxv" secondAttribute="trailing" constant="-8" id="dw4-46-dAt"/>
+                    <constraint firstItem="KXF-2a-GV0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="h1V-38-9K5"/>
+                    <constraint firstItem="KXF-2a-GV0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kZU-9Z-9ex"/>
                     <constraint firstItem="4dq-my-tmB" firstAttribute="leading" secondItem="yP5-0j-Rxv" secondAttribute="leading" constant="8" id="lvu-KW-vX0"/>
+                    <constraint firstItem="KXF-2a-GV0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wyz-rH-jeu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundImageView" destination="yP5-0j-Rxv" id="9gU-pZ-sUM"/>
+                <outlet property="blackBackground" destination="KXF-2a-GV0" id="oIO-7w-YTz"/>
                 <outlet property="subTitleLabel" destination="4dq-my-tmB" id="fdN-W3-DFT"/>
                 <outlet property="titleLabel" destination="hKs-s1-hQc" id="KPF-Mh-wdY"/>
             </connections>
