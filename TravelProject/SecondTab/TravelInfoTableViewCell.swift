@@ -23,9 +23,9 @@ class TravelInfoTableViewCell: UITableViewCell {
         configureUI()
     }
     
-//    override func prepareForReuse() {
-//        travelImageView.image = UIImage(systemName: "star")
-//    }
+    override func prepareForReuse() {
+        travelImageView.image = UIImage(systemName: "photo.badge.exclamationmark")
+    }
     
     private func configureUI() {
         travelImageView.layer.cornerRadius = 10

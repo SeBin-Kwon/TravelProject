@@ -495,11 +495,11 @@
             </objects>
             <point key="canvasLocation" x="1288" y="1072"/>
         </scene>
-        <!--인기 도시-->
+        <!--인기 도시 검색-->
         <scene sceneID="spO-IX-ACc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qu9-ye-k3G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="인기 도시" image="document" catalog="system" id="Fdg-tl-Nzf"/>
+                    <tabBarItem key="tabBarItem" title="인기 도시 검색" image="magnifyingglass" catalog="system" id="Fdg-tl-Nzf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XrS-ak-V76">
                         <rect key="frame" x="0.0" y="62" width="402" height="44"/>
@@ -518,10 +518,10 @@
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
-        <image name="document" catalog="system" width="115" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="info.bubble" catalog="system" width="128" height="110"/>
         <image name="magazine" catalog="system" width="110" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

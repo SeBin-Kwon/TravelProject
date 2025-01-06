@@ -21,6 +21,10 @@ class CityTableViewCell: UITableViewCell {
         configureUI()
     }
     
+    override func prepareForReuse() {
+        backgroundImageView.image = UIImage(systemName: "photo.badge.exclamationmark")
+    }
+    
     private func configureUI() {
         backgroundImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
         backgroundImageView.layer.cornerRadius = 20

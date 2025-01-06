@@ -22,6 +22,10 @@ class MagazineTableViewCell: UITableViewCell {
         configureUI()
     }
     
+    override func prepareForReuse() {
+        photoImageView.image = UIImage(systemName: "photo.badge.exclamationmark")
+    }
+    
     private func configureUI() {
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.layer.cornerRadius = 15
