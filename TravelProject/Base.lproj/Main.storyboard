@@ -348,6 +348,35 @@
             </objects>
             <point key="canvasLocation" x="2275.5725190839694" y="1071.8309859154931"/>
         </scene>
+        <!--도시-->
+        <scene sceneID="CgO-4c-dyC">
+            <objects>
+                <tableViewController id="a2Y-08-Cuv" customClass="CityTableViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ivJ-pv-p5O">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Tra-Gm-leO">
+                                <rect key="frame" x="0.0" y="50" width="402" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tra-Gm-leO" id="M9J-SI-47t">
+                                    <rect key="frame" x="0.0" y="0.0" width="402" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="a2Y-08-Cuv" id="7hf-yT-x7H"/>
+                            <outlet property="delegate" destination="a2Y-08-Cuv" id="ral-75-2bE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="도시" id="pZV-rF-2eg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8c-bc-gtN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2275" y="1825"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UPm-7s-Xs9">
             <objects>
@@ -362,6 +391,7 @@
                         <segue destination="w1a-zt-YTf" kind="relationship" relationship="viewControllers" id="WnF-u2-W74"/>
                         <segue destination="tau-tn-ZOQ" kind="relationship" relationship="viewControllers" id="pq1-5a-3pu"/>
                         <segue destination="glF-8A-U3u" kind="relationship" relationship="viewControllers" id="6H4-Dc-6Kt"/>
+                        <segue destination="qu9-ye-k3G" kind="relationship" relationship="viewControllers" id="yMC-jF-vvQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cI-yK-nvP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -424,6 +454,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i29-gN-hvy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1288" y="1072"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="spO-IX-ACc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qu9-ye-k3G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Fdg-tl-Nzf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XrS-ak-V76">
+                        <rect key="frame" x="0.0" y="62" width="402" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="a2Y-08-Cuv" kind="relationship" relationship="rootViewController" id="3sB-3D-4KI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Os-QG-rkU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1343" y="1825"/>
         </scene>
     </scenes>
     <resources>
