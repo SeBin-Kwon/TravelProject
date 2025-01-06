@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CityTableViewCell: UITableViewCell {
     
@@ -20,12 +21,21 @@ class CityTableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        backgroundImageView.layer.masksToBounds = true
-        backgroundImageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+//        backgroundImageView.layer.masksToBounds = true
+//        backgroundImageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        titleLabel.textColor = .white
+        titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        titleLabel.textAlignment = .right
+        subTitleLabel.textColor = .white
+        subTitleLabel.font = .systemFont(ofSize: 13, weight: .medium)
+        backgroundImageView.contentMode = .scaleAspectFill
     }
     
     func configureData(row: City) {
-        titleLabel.text = row.city_name
+        titleLabel.text = row.title
+        guard let url = URL(string: row.city_image) else { return }
+        backgroundImageView.kf.setImage(with: url)
+        subTitleLabel.text = row.city_explain
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
