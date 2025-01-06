@@ -15,6 +15,14 @@ struct Travel {
     let save: Int?
     var like: Bool?
     let ad: Bool
+    
+    var gradeText: String {
+        return "별점 \(String(grade ?? 0.0))"
+    }
+    
+    var saveText: String {
+        return " · 저장 \(save?.formatted() ?? "0")"
+    }
 }
 
 struct TravelInfo {

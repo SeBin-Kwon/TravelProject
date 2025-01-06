@@ -26,7 +26,7 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         textField.delegate = self
         configureHeaderUI()
-        tableView.rowHeight = 56
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -50,36 +50,15 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingTableViewCell.identifier, for: indexPath)
         guard let shoppingCell = cell as? ShoppingTableViewCell else { return cell }
         let row = shoppingList[indexPath.row]
-        configureCellUI(cell: shoppingCell, row: row)
-        
+        shoppingCell.configureData(row: row)
         shoppingCell.checkButton.tag = indexPath.row
         shoppingCell.favoriteButton.tag = indexPath.row
-        
         shoppingCell.checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
         shoppingCell.favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-        
         return shoppingCell
-    }
-    
-    func configureCellUI(cell: ShoppingTableViewCell, row: Shopping) {
-        cell.shoppingLabel.text = row.title
-        cell.shoppingLabel.font = .systemFont(ofSize: 14)
-        cell.shoppingLabel.numberOfLines = 0
-        
-        cell.cellBackground.backgroundColor = .systemGray6
-        cell.cellBackground.layer.cornerRadius = 10
-        
-        cell.checkButton.tintColor = .black
-        cell.checkButton.setImage(UIImage(systemName: row.check ? "checkmark.square.fill" : "checkmark.square"), for: .normal)
-        
-        cell.favoriteButton.tintColor = .black
-        let symbolConfig = UIImage.SymbolConfiguration(scale: .medium)
-        let mediumStar = UIImage(systemName: "star", withConfiguration: symbolConfig)
-        let mediumStarFill = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
-        cell.favoriteButton.setImage(row.favorite ? mediumStarFill : mediumStar, for: .normal)
     }
     
     func configureHeaderUI() {
@@ -88,7 +67,7 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
         textFieldBackground.layer.cornerRadius = 10
         
         textField.borderStyle = .none
-        textField.placeholder = "구매할 물건을 20자 이내로 작성해 주세요."
+        textField.placeholder = "구매할 물건을 50자 이내로 작성해 주세요."
         textField.backgroundColor = .clear
         
         addButton.setTitle("추가", for: .normal)
@@ -103,11 +82,8 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
             self.displayDeleteAlert { action in
                 if action.style == .destructive {
                     self.shoppingList.remove(at: indexPath.row)
-                    // MARK: 왜 얘를 쓰면 인덱스 에러가 날까요..?
 //                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    // 얘를 쓰면 delete할때 애니메이션이 사라져서 쓰기실허요..ㅠ
                     tableView.reloadData()
-//                    print(self.shoppingList.count)
                     success(true)
                 } else {
                     success(true)
@@ -139,7 +115,7 @@ class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
-        if text.count + string.count > 20 { return false }
+        if text.count + string.count > 50 { return false }
         return true
     }
     
