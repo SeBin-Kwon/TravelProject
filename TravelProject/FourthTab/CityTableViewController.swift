@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CityTableViewController: UITableViewController {
+final class CityTableViewController: UITableViewController {
     
     let cityList = CityInfo().city
     var domesticList: [City] {

@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class TravelDetailViewController: UIViewController {
+final class TravelDetailViewController: UIViewController {
     
     static let identifier = "TravelDetailViewController"
     var travelImage: String?

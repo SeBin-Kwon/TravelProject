@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MagazineTableViewController: UITableViewController {
+final class MagazineTableViewController: UITableViewController {
 
     let magazines = MagazineInfo().magazine
     

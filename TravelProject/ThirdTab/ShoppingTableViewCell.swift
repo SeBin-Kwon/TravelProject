@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShoppingTableViewCell: UITableViewCell {
+final class ShoppingTableViewCell: UITableViewCell {
     
     static let identifier = "ShoppingTableViewCell"
 

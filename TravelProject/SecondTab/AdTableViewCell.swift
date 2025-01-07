@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AdTableViewCell: UITableViewCell {
+final class AdTableViewCell: UITableViewCell {
     
     static let identifier = "AdTableViewCell"
     

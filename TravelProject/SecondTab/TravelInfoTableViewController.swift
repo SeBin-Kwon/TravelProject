@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class TravelInfoTableViewController: UITableViewController {
+final class TravelInfoTableViewController: UITableViewController {
     
     @IBOutlet var navigationBar: UINavigationItem!
     var travelInfo = TravelInfo().travel

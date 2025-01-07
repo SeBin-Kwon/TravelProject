@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class NewCityCollectionViewCell: UICollectionViewCell {
+final class NewCityCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "NewCityCollectionViewCell"
     

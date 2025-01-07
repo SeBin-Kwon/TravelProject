@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AdDetailViewController: UIViewController {
+final class AdDetailViewController: UIViewController {
     
     static let identifier = "AdDetailViewController"
     var adText: String?

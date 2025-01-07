@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class CityTableViewCell: UITableViewCell {
+final class CityTableViewCell: UITableViewCell {
     
     static let identifier = "CityTableViewCell"
     @IBOutlet private var titleLabel: UILabel!

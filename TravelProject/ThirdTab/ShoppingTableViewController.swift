@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
+final class ShoppingTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var textFieldBackground: UIView!

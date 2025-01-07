@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TravelInfoTableViewCell: UITableViewCell {
+final class TravelInfoTableViewCell: UITableViewCell {
     
     static let identifier = "TravelInfoTableViewCell"
     

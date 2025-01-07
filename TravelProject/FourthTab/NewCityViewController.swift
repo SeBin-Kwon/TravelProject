@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewCityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+final class NewCityViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet private var navigationBar: UINavigationItem!
     @IBOutlet private var textField: UITextField!
