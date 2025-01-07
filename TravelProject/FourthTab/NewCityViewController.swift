@@ -13,6 +13,7 @@ final class NewCityViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet private var textField: UITextField!
     @IBOutlet private var segment: UISegmentedControl!
     @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet var textFieldBackground: UIView!
     
     private let cityList = CityInfo().city
     private var domesticList: [City] {
@@ -39,6 +40,7 @@ final class NewCityViewController: UIViewController, UICollectionViewDelegate, U
         collectionView.dataSource = self
         configureLayout()
         configureSegmentUI()
+        configureTextFieldUI()
         navigationBar.title = "인기 도시"
     }
 
@@ -77,6 +79,14 @@ final class NewCityViewController: UIViewController, UICollectionViewDelegate, U
             $0.city_explain.localizedCaseInsensitiveContains(text)
         }
         return result
+    }
+    
+    private func configureTextFieldUI() {
+        textField.placeholder = "찾고 싶은 도시를 검색해 보세요"
+        textField.borderStyle = .none
+        textField.backgroundColor = .none
+        textFieldBackground.backgroundColor = .systemGray6
+        textFieldBackground.layer.cornerRadius = 12
     }
     
     private func configureSegmentUI() {
