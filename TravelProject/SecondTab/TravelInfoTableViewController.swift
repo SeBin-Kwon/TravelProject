@@ -15,14 +15,39 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigation()
+    }
+    
+    private func configureNavigation() {
         navigationBar.title = "도시 상세 정보"
+        navigationBar.backBarButtonItem = nil
     }
     
     @objc
-    func likeButtonTapped(_ sender: UIButton) {
+    private func likeButtonTapped(_ sender: UIButton) {
         guard travelInfo[sender.tag].like != nil else { return }
         travelInfo[sender.tag].like?.toggle()
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = travelInfo[indexPath.row]
+        switch row.ad {
+        case true:
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: AdDetailViewController.identifier) as? AdDetailViewController else { return }
+            vc.adText = row.title
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            nav.modalTransitionStyle = .crossDissolve
+            present(nav, animated: true)
+        case false:
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: TravelDetailViewController.identifier) as? TravelDetailViewController else { return }
+            vc.titleText = row.title
+            vc.subText = row.description
+            vc.travelImage = row.travel_image
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
