@@ -548,6 +548,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="textFieldEditingChanged:" destination="it4-6f-F1v" eventType="editingChanged" id="GlZ-if-Cpy"/>
+                                    <action selector="textFieldReturnKeyTapped:" destination="it4-6f-F1v" eventType="editingDidEndOnExit" id="C7N-BX-QRo"/>
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jKR-zM-hH5">
@@ -573,6 +574,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uzK-L1-Wlj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="uzK-L1-Wlj" firstAttribute="trailing" secondItem="oCw-cw-6tM" secondAttribute="trailing" constant="16" id="6Fz-mJ-rsJ"/>
                             <constraint firstItem="oCw-cw-6tM" firstAttribute="leading" secondItem="uzK-L1-Wlj" secondAttribute="leading" constant="16" id="88B-Zi-b2P"/>
@@ -585,6 +587,9 @@
                             <constraint firstItem="jKR-zM-hH5" firstAttribute="top" secondItem="c5d-vT-HOn" secondAttribute="bottom" constant="16" id="Wpa-lg-3Iv"/>
                             <constraint firstItem="oCw-cw-6tM" firstAttribute="top" secondItem="uzK-L1-Wlj" secondAttribute="top" constant="16" id="qjY-Jt-hA8"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="PGs-al-ZU4" appends="YES" id="fTr-0Q-AHx"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Uek-gr-cHA"/>
                     <connections>
@@ -595,6 +600,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u04-ya-4TX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PGs-al-ZU4">
+                    <connections>
+                        <action selector="tapGestureTapped:" destination="it4-6f-F1v" id="9UH-ew-2l4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2186.5671641791046" y="1824.7139588100686"/>
         </scene>

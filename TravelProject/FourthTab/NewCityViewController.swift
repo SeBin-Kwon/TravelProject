@@ -25,6 +25,10 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
         segment.selectedSegmentIndex
     }
     private var filterList = [City]()
+    private var isSearching: Bool {
+        let text = textField.text ?? ""
+        return !text.isEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +40,42 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
         configureSegmentUI()
         navigationBar.title = "인기 도시"
     }
+
+    @IBAction func textFieldReturnKeyTapped(_ sender: UITextField) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func tapGestureTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        guard let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        switch segmentIndex {
+        case 1:
+            filterList = filteringList(list: domesticList, text: text)
+        case 2:
+            filterList = filteringList(list: overseasList, text: text)
+        default:
+            filterList = filteringList(list: cityList, text: text)
+        }
+        collectionView.reloadData()
     }
     
     
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
-        print(segmentIndex)
+        textFieldEditingChanged(textField)
         collectionView.reloadData()
+    }
+    
+    private func filteringList(list: [City], text: String) -> [City] {
+        let result = list.filter {
+            $0.city_name.localizedCaseInsensitiveContains(text) ||
+            $0.city_english_name.localizedCaseInsensitiveContains(text) ||
+            $0.city_explain.localizedCaseInsensitiveContains(text)
+        }
+        return result
     }
     
     private func configureSegmentUI() {
@@ -64,15 +96,19 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewCityCollectionViewCell.identifier, for: indexPath)
         guard let collectionCell = cell as? NewCityCollectionViewCell else { return cell }
+        let item: City
         switch segmentIndex {
         case 1:
-            collectionCell.configureData(item: domesticList[indexPath.row])
+            item = isSearching ? filterList[indexPath.row] : domesticList[indexPath.row]
+            collectionCell.configureData(item: item)
             return collectionCell
         case 2:
-            collectionCell.configureData(item: overseasList[indexPath.row])
+            item = isSearching ? filterList[indexPath.row] : overseasList[indexPath.row]
+            collectionCell.configureData(item: item)
             return collectionCell
         default:
-            collectionCell.configureData(item: cityList[indexPath.row])
+            item = isSearching ? filterList[indexPath.row] : cityList[indexPath.row]
+            collectionCell.configureData(item: item)
             return collectionCell
         }
     }
@@ -80,11 +116,11 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch segmentIndex {
         case 1:
-            return domesticList.count
+            return isSearching ? filterList.count : domesticList.count
         case 2:
-            return overseasList.count
+            return isSearching ? filterList.count : overseasList.count
         default:
-            return cityList.count
+            return isSearching ? filterList.count : cityList.count
         }
     }
 
