@@ -36,11 +36,13 @@ class NewCityCollectionViewCell: UICollectionViewCell {
         explainLabel.textColor = .gray
     }
     
-    func configureData(item: City) {
+    func configureData(item: City, searchText: String) {
         guard let url = URL(string: item.city_image) else { return }
         imageView.kf.setImage(with: url)
         titleLabel.text = item.title
         explainLabel.text = item.city_explain
+        titleLabel.attributedText = item.title.highlightText(target: searchText)
+        explainLabel.attributedText = item.city_explain.highlightText(target: searchText)
     }
 
 }

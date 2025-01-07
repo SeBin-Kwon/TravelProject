@@ -29,6 +29,7 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
         let text = textField.text ?? ""
         return !text.isEmpty
     }
+    private var searchText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,7 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         guard let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        searchText = text
         switch segmentIndex {
         case 1:
             filterList = filteringList(list: domesticList, text: text)
@@ -62,7 +64,6 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         collectionView.reloadData()
     }
-    
     
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
         textFieldEditingChanged(textField)
@@ -100,15 +101,15 @@ class NewCityViewController: UIViewController, UICollectionViewDelegate, UIColle
         switch segmentIndex {
         case 1:
             item = isSearching ? filterList[indexPath.row] : domesticList[indexPath.row]
-            collectionCell.configureData(item: item)
+            collectionCell.configureData(item: item, searchText: searchText)
             return collectionCell
         case 2:
             item = isSearching ? filterList[indexPath.row] : overseasList[indexPath.row]
-            collectionCell.configureData(item: item)
+            collectionCell.configureData(item: item, searchText: searchText)
             return collectionCell
         default:
             item = isSearching ? filterList[indexPath.row] : cityList[indexPath.row]
-            collectionCell.configureData(item: item)
+            collectionCell.configureData(item: item, searchText: searchText)
             return collectionCell
         }
     }
