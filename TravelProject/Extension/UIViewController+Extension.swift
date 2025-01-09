@@ -8,7 +8,9 @@
 import UIKit
 
 extension UIViewController {
-    
+    static var identifier: String {
+        String(describing: self)
+    }
     func screen() -> UIScreen? {
         guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
             return view.window?.windowScene?.screen

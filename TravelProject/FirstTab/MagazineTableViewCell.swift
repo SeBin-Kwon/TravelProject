@@ -10,8 +10,6 @@ import Kingfisher
 
 final class MagazineTableViewCell: UITableViewCell {
     
-    static let identifier = "MagazineTableViewCell"
-    
     @IBOutlet private var photoImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var subTitleLabel: UILabel!

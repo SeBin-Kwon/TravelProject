@@ -9,8 +9,6 @@ import UIKit
 
 final class TravelInfoTableViewCell: UITableViewCell {
     
-    static let identifier = "TravelInfoTableViewCell"
-    
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     @IBOutlet private var travelImageView: UIImageView!
