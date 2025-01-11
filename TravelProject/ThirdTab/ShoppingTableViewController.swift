@@ -82,8 +82,8 @@ final class ShoppingTableViewController: UITableViewController, UITextFieldDeleg
             self.displayDeleteAlert { action in
                 if action.style == .destructive {
                     self.shoppingList.remove(at: indexPath.row)
-//                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.reloadData()
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadRows(at: [indexPath], with: .fade)
                     success(true)
                 } else {
                     success(true)
