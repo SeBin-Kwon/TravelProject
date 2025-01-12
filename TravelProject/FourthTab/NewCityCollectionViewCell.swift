@@ -10,8 +10,6 @@ import Kingfisher
 
 final class NewCityCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "NewCityCollectionViewCell"
-    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explainLabel: UILabel!

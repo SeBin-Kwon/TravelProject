@@ -9,8 +9,7 @@ import UIKit
 import Kingfisher
 
 final class TravelDetailViewController: UIViewController {
-    
-    static let identifier = "TravelDetailViewController"
+
     var travelImage: String?
     var titleText: String?
     var subText: String?

@@ -8,8 +8,6 @@
 import UIKit
 
 final class ShoppingTableViewCell: UITableViewCell {
-    
-    static let identifier = "ShoppingTableViewCell"
 
     @IBOutlet private var cellBackground: UIView!
     @IBOutlet var checkButton: UIButton!
